@@ -11,23 +11,35 @@
             overflow: hidden;
         }
         body {
-            background: url('my-image.jpg') no-repeat center center fixed;
+            background: url('desktop-image.jpg') no-repeat center center fixed;
             background-size: cover;
             width: 100vw;
             height: 100vh;
         }
-        @media (max-width: 768px) { /* Adjust for smaller screens */
+        @media (max-width: 768px) { /* Mobile-specific styles */
             body {
-                background-attachment: scroll; /* Prevents weird zooming on mobile */
+                background: url('mobile-image.jpg') no-repeat center center fixed;
+                background-size: cover;
             }
         }
-        audio {
-            display: none;
+        /* Music button styling */
+        .music-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
+    <button class="music-btn" onclick="document.getElementById('bg-music').play()">Play Music</button>
+    <audio id="bg-music" loop>
         <source src="background-music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
