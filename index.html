@@ -1,9 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hello </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Image & Background Music</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background: url('my-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+        }
+        @media (max-width: 768px) { /* Adjust for smaller screens */
+            body {
+                background-attachment: scroll; /* Prevents weird zooming on mobile */
+            }
+        }
+        audio {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
+    <audio autoplay loop>
+        <source src="background-music.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
