@@ -55,13 +55,16 @@
     <button id="playButton">Play Music</button>
 
     <audio id="backgroundMusic" loop>
-        <source src="music.mp3" type="audio/mp3">
+        <source src="https://raw.githubusercontent.com/arycn7/aryanchandhok/main/music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
         function setBackgroundImage() {
-            let bgImage = window.innerWidth > 768 ? 'desktop-image.jpg' : 'mobile-image.jpg';
+            let desktopImg = "https://raw.githubusercontent.com/arycn7/aryanchandhok/main/desktop-image.jpg";
+            let mobileImg = "https://raw.githubusercontent.com/arycn7/aryanchandhok/main/mobile-image.jpg";
+            let bgImage = window.innerWidth > 768 ? desktopImg : mobileImg;
+
             document.body.style.backgroundImage = `url('${bgImage}')`;
             console.log("Background set to:", bgImage); // Debugging output
         }
