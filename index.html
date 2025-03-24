@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fullscreen Background with Music</title>
     <style>
-        /* Reset page styles */
         body, html {
             margin: 0;
             padding: 0;
@@ -20,7 +19,7 @@
             background-attachment: fixed;
         }
 
-        /* Black overlay to improve text visibility */
+        /* Overlay */
         .overlay {
             position: absolute;
             top: 0;
@@ -30,7 +29,7 @@
             background: rgba(0, 0, 0, 0.3);
         }
 
-        /* Play button styling */
+        /* Play button */
         #playButton {
             position: absolute;
             bottom: 20px;
@@ -52,31 +51,29 @@
 </head>
 <body>
     <div class="overlay"></div>
-    
+
     <button id="playButton">Play Music</button>
-    
+
     <audio id="backgroundMusic" loop>
         <source src="music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        // JavaScript to dynamically set the background image
         function setBackgroundImage() {
             let bgImage = window.innerWidth > 768 ? 'desktop-image.jpg' : 'mobile-image.jpg';
             document.body.style.backgroundImage = `url('${bgImage}')`;
+            console.log("Background set to:", bgImage); // Debugging output
         }
 
-        // Ensure the background image is set correctly on load and resize
         window.onload = setBackgroundImage;
         window.onresize = setBackgroundImage;
 
-        // Handle play button click to toggle music
         document.getElementById("playButton").addEventListener("click", function() {
             const audio = document.getElementById("backgroundMusic");
 
             if (audio.paused) {
-                audio.play().catch(error => console.error("Playback failed:", error));
+                audio.play().then(() => console.log("Music playing")).catch(error => console.error("Playback failed:", error));
                 this.textContent = "Pause Music";
             } else {
                 audio.pause();
